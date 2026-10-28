@@ -13,6 +13,11 @@
   reporting the issue and providing a patch.
 * This package now compiles on WASM, making it available in webR.
 
+## MINOR CHANGES
+
+* Bundled compression libraries have been updated to their latest version:
+  - blosc: 1.20.1 🠪 1.21.6
+
 # rhdf5filters 1.24.0
 
 ## BUG FIXES
