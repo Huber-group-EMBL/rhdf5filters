@@ -11,6 +11,7 @@
 
 * This package now compiles on Windows ARM. Thanks to Jeroen Ooms for 
   reporting the issue and providing a patch.
+* This package now compiles on WASM, making it available in webR.
 
 # rhdf5filters 1.24.0
 
