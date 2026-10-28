@@ -124,11 +124,13 @@ if test -z "$HAVE_BLOSC"; then
     AX_CHECK_COMPILE_FLAG([-mavx2], [MAVX2=true], [MAVX2=false])
   fi
   
+  # 4th argument used for cross-compilation (e.g., WASM)
   AC_RUN_IFELSE(
         [AC_LANG_PROGRAM([#include <stdlib.h>],
           [__builtin_cpu_init ();])
         ],
         [ax_cv_gcc_check_x86_cpu_init=true],
+        [ax_cv_gcc_check_x86_cpu_init=false],
         [ax_cv_gcc_check_x86_cpu_init=false])
   
   ## check CPU supports sse2 and avx2
@@ -232,12 +234,14 @@ if test "${CPU_ARCH}" = arm64; then
 elif test "${CPU_ARCH}" = x86; then
 
   ## see if -mavx is a supported flag
+  # 4th argument used for cross-compilation (WASM)
   AX_CHECK_COMPILE_FLAG([-mavx], [MAVX=true], [MAVX=false])
   AC_RUN_IFELSE(
       [AC_LANG_PROGRAM([#include <stdlib.h>],
         [__builtin_cpu_init ();])
       ],
       [ax_cv_gcc_check_x86_cpu_init=true],
+      [ax_cv_gcc_check_x86_cpu_init=false],
       [ax_cv_gcc_check_x86_cpu_init=false])
       
   if [ "${MAVX}" = "true" ] && [ "${ax_cv_gcc_check_x86_cpu_init}" = "true" ] ; then
